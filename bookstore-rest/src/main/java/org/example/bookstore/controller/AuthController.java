@@ -6,7 +6,6 @@ import org.example.bookstore.dto.JwtTokenDTO;
 import org.example.bookstore.dto.UserDTO;
 import org.example.bookstore.service.UserService;
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 
