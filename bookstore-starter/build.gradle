@@ -1,0 +1,19 @@
+plugins {
+	id 'org.springframework.boot' version "$springBootVersion"
+}
+
+dependencies {
+	implementation project(':bookstore-service')
+	implementation project(':bookstore-rest')
+	implementation project(':bookstore-graphql')
+	implementation "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
+	testImplementation "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
+	testImplementation 'org.springframework.graphql:spring-graphql-test:1.2.4'
+	testImplementation "org.testcontainers:testcontainers:$testContainersVersion"
+	testImplementation "org.testcontainers:junit-jupiter:$testContainersVersion"
+	testImplementation "org.testcontainers:postgresql:$testContainersVersion"
+	testImplementation "org.testcontainers:mongodb:$testContainersVersion"
+	testImplementation "org.springframework.boot:spring-boot-testcontainers:$springBootVersion"
+	testImplementation 'org.junit.jupiter:junit-jupiter-params:5.10.1'
+	testImplementation "org.springframework.boot:spring-boot-starter-data-jpa:$springBootVersion"
+}

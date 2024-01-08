@@ -1,0 +1,26 @@
+jwt:
+  issuer: bookstore
+  secret: ${JWT_SECRET}
+  ttl: 86400000
+
+
+spring:
+  data:
+    mongodb:
+      uri: ${MONGO_URL}
+
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${POSTGRES_URL}
+  graphql:
+    graphiql:
+      enabled: true
+    servlet:
+      mapping: /graphql

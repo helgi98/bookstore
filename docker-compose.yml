@@ -1,0 +1,43 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data_16/
+      - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
+  mongo:
+    image: mongo:4.4.27
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGODB_INITDB_ROOT_USERNAME=user
+      - MONGODB_INITDB_ROOT_PASSWORD=pass
+      - MONGO_INITDB_DATABASE=bookstore_service
+    volumes:
+      - mongo_data:/data/mongopageRequestDTO
+      - ./scripts/mongo-init.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+  bookstore:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - POSTGRES_URL=jdbc:postgresql://postgres:5432/postgres?user=bookstore_user&password=password
+      - MONGO_URL=mongodb://bookstore_user:password@mongo:27017/bookstore_service
+      - JWT_SECRET=e7eee354-8f22-46ab-81f3-5021a6ace1cd
+      - SPRING_PROFILES_ACTIVE=local
+    depends_on:
+      - postgres
+      - mongo
+volumes:
+  postgres_data:
+    driver: local
+  mongo_data:
+    driver: local

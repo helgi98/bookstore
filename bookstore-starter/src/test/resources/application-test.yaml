@@ -1,0 +1,22 @@
+jwt:
+  issuer: bookstore
+  secret: e7eee354-8f22-46ab-81f3-5021a6ace1cd
+  ttl: 86400000
+
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+
+spring:
+  test:
+    database:
+      replace: none
+  datasource:
+    url: jdbc:tc:postgresql:12.9-alpine:///spring_boot_testcontainers
+  graphql:
+    graphiql:
+      enabled: true
+    servlet:
+      mapping: /graphql

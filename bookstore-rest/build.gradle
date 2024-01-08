@@ -1,0 +1,8 @@
+dependencies {
+    implementation project(':bookstore-service')
+    implementation "org.springframework.boot:spring-boot-starter-jdbc:$springBootVersion"
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
+    implementation "org.springframework.boot:spring-boot-starter-validation:$springBootVersion"
+    implementation "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}

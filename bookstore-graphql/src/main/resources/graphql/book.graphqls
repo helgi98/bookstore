@@ -1,0 +1,60 @@
+type Query {
+
+    bookById(id: Int!): Book
+
+    books(page: Int!, size: Int!): PagedBookResponse
+
+    filterBooks(page: Int!, size: Int!, filter: BookField!): PagedBookResponse
+
+}
+
+type Mutation {
+
+    createBook(createBook: BookInput!): Book
+
+    updateBook(id: Int!, updateBook: BookInput!): Book
+
+    deleteBook(id: Int!): Boolean
+
+}
+
+type Book {
+    id: Int!
+    title: String!
+    author: String!
+    isbn: String!
+    description: String!
+    pages: Int!
+    price: Float!
+    publicationYear: Int!
+}
+
+input BookInput {
+    title: String!
+    author: String!
+    isbn: String!
+    description: String!
+    pages: Int!
+    price: Float!
+    publicationYear: Int!
+}
+
+input BookField {
+    title: FilterField
+    author: FilterField
+    isbn: FilterField
+    description: FilterField
+    pages: FilterField
+    price: FilterField
+    publicationYear: FilterField
+}
+
+input FilterField {
+    operator: String!
+    value: String!
+}
+
+type PagedBookResponse {
+    content: [Book]!
+    totalElements: Int!
+}

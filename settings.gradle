@@ -1,0 +1,8 @@
+rootProject.name = 'bookstore'
+include 'bookstore-mongo-repo'
+include 'bookstore-pg-repo'
+include 'bookstore-service'
+include 'bookstore-rest'
+include 'bookstore-graphql'
+include 'bookstore-starter'
+
