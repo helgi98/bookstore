@@ -26,12 +26,12 @@ public class BookReviewController {
 
     @PostMapping("/{bookId}/reviews")
     @ResponseStatus(HttpStatus.CREATED)
-    public BookReviewDTO addReview(@PathVariable("bookId") @NotNull Long bookId, @RequestBody @NotNull BookReviewDTO.BookReviewRequest bookReviewRequest) {
+    public BookReviewDTO addReview(@PathVariable("bookId") @NotNull Long bookId, @RequestBody @Valid @NotNull BookReviewDTO.BookReviewRequest bookReviewRequest) {
         return bookReviewService.addComment(bookId, bookReviewRequest);
     }
 
     @PutMapping("/{bookId}/reviews/{id}")
-    public BookReviewDTO updateReview(@PathVariable("id") @NotNull String id, @RequestBody @NotNull BookReviewDTO.BookReviewRequest updateBookReview) {
+    public BookReviewDTO updateReview(@PathVariable("id") @NotNull String id, @RequestBody @Valid @NotNull BookReviewDTO.BookReviewRequest updateBookReview) {
         return bookReviewService.updateReview(id, updateBookReview);
     }
 
